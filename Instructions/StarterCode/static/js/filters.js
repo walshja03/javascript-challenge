@@ -97,6 +97,12 @@ function findinfo() {
                 row.append("td").text(v);
             })
         })
+        d3.select("#dateSelect").node().value = "all";
+        d3.select("#countrySelect").node().value = "all";
+        d3.select("#shapeSelect").node().value = "all";
+        d3.select("#citySelect").node().value = "all";
+        d3.select("#stateSelect").node().value = "all";
+        
     }    
 }
 var countryselect = d3.select("#countrySelect")
