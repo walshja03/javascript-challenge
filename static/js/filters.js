@@ -2,7 +2,12 @@
 var tableData = data;
 console.log(data.length)
 // YOUR CODE HERE!
-
+function convert(str) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [mnth,day,date.getFullYear()].join("/");
+}
 
 
 // Select the button
@@ -14,17 +19,16 @@ var form = d3.select("#datetime");
 // Create event handlers 
 button.on("click", findinfo);
 form.on("submit",findinfo);
-statevalues = sts.map(state => state.toLowerCase())
-cityvalues = cities.map(city =>city.toLowerCase())
-console.log(statevalues)
-function findinfo() {
 
+function findinfo() {
+    console.log(convert(dateselected.toString()))
+    statevalues = sts.map(state => state.toLowerCase())
+    cityvalues = cities.map(city =>city.toLowerCase())
+    console.log(statevalues)
     // Prevent the page from refreshing
     d3.event.preventDefault();
     
-    var dateinput = d3.select("#dateSelect").property("value");
-    console.log(typeof(dateinput))
-    console.log(dateinput)
+    var dateinput = convert(dateselected.toString())
 
     countryfilter = d3.select("#countrySelect").property("value");
     console.log(countryfilter)
