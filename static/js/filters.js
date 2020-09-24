@@ -1,11 +1,12 @@
 // from data.js
 var tableData = data;
 console.log(data.length)
-// YOUR CODE HERE!
+
+//function to convert the date chosen with the date picker to a string in the format of the data
 function convert(str) {
     var date = new Date(str),
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
+    mnth = ((date.getMonth() + 1)),
+    day = (date.getDate());
     return [mnth,day,date.getFullYear()].join("/");
 }
 
@@ -30,7 +31,7 @@ function findinfo() {
     
     //convert the selected date to a string for filtering
     var dateinput = convert(dateselected.toString())
-
+    console.log(dateinput)
     //read in and store country selected
     countryfilter = d3.select("#countrySelect").property("value");
     console.log(countryfilter)
