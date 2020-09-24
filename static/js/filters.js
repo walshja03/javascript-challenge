@@ -28,11 +28,14 @@ function findinfo() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
     
+    //convert the selected date to a string for filtering
     var dateinput = convert(dateselected.toString())
 
+    //read in and store country selected
     countryfilter = d3.select("#countrySelect").property("value");
     console.log(countryfilter)
 
+    //read in and store state selected
     statefilter = d3.select("#stateSelect").property("value");
     console.log(statefilter)
 
@@ -109,9 +112,11 @@ function findinfo() {
         
     }    
 }
+//event that will pick up a country selection and run a filter to change the other selections accordingly
 var countryselect = d3.select("#countrySelect")
 countryselect.on("click", limitAfterCountry)
 
+//function to limit selection choices of state and city if a country is chosen
 function limitAfterCountry(){
     country = d3.select("#countrySelect").property("value")
     console.log(country)
@@ -153,9 +158,12 @@ function limitAfterCountry(){
         })
     }
 }
+
+//event that will pick up a state selection and run a filter to change the other selections accordingly
 var stateselect = d3.select("#stateSelect")
 stateselect.on("click", limitAfterState)
 
+//function to limit the cities that can be selected based on the state chosen
 function limitAfterState(){
     state = d3.select("#stateSelect").property("value")
     var statefilter = tableData.filter(siting => siting.state ===state);
